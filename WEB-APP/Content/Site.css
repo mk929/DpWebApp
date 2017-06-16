@@ -1,0 +1,208 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 250px;
+}
+
+
+.companyLogo {
+    background: url(~/Content/Images/logo.png) no-repeat top left;
+    display: block;
+    width: 100px;
+    height: 100px;
+    border: inset;
+    border-width: medium;
+    text-indent: -9999px; /* hides the link text */
+}
+
+/* Float the div left, center and right */
+div.clear {
+    clear: both;
+}
+
+div.parent {
+    margin-bottom: 15px;
+    padding: 10px;
+    /* color: #0A416B; */
+    clear: both;
+}
+
+div.left, div.center, div.right {
+    float: left;
+    width: 32%;
+    border: 0px solid #CEDCEA;
+    padding: 5px;
+}
+
+/* Preventing anchor jump under the fix header */
+a.jump {
+    display: block;
+    position: relative;
+    height: 100px; /*same height as header*/
+    margin-top: -100px; /*same height as header*/
+    visibility: hidden;
+}
+
+div.centerscreen {
+    /* position: fixed; */
+    top: 50%;
+    left: 50%;
+    width: 30em;
+    height: 18em;
+    margin-top: -9em; /*set to a negative number 1/2 of your height*/
+    margin-left: -15em; /*set to a negative number 1/2 of your width*/
+    border: 1px solid #ccc;
+    background-color: #f3f3f3;
+}
+
+.embassypaper01 {
+    padding: 30px;
+    padding-left: 50px;
+    border: 0px solid #666;
+    background: #fbfbfb;
+    box-shadow: 0px 0px 2px rgba(0,0,0,0.3);
+}
+
+.embassypaperbg {
+background:#fafafa; border:solid 0px; padding: 20px; height:80vh;
+}
+
+.embassypaper {
+    margin: 0 auto; padding: 15px; border: 0px solid #666;
+    background: #fbfbfb;
+    box-shadow: 0px 0px 3px rgba(0,0,0,0.3);
+    font-family: inherit;
+}
+
+
+/* Highlighted Text */
+.highlight {
+    background: #ffd800;
+    padding: 5px;
+    text-decoration: solid;
+}
+
+
+.glyphicon.spinning {
+    animation: spin 1s infinite linear;
+    -webkit-animation: spin2 1s infinite linear;
+}
+
+@keyframes spin {
+    from { transform: scale(1) rotate(0deg); }
+    to { transform: scale(1) rotate(360deg); }
+}
+
+@-webkit-keyframes spin2 {
+    from { -webkit-transform: rotate(0deg); }
+    to { -webkit-transform: rotate(360deg); }
+}
+
+.center-div
+{
+  position: absolute;
+  margin: auto;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100px;
+  height: 100px;
+  background-color: #ccc;
+  border-radius: 3px;
+}
+
+/* Note: Add MimeType  .woff to application/font-woff in IIS*/
+@font-face {
+    font-family: 'Myanmar3';
+    src: local('Myanmar3');
+    src: url('fonts/myanmar3.eot') format('eot'), url('fonts/myanmar3.woff') format('woff'), url('fonts/myanmar3.ttf') format('truetype');
+}
+
+/*
+html, body, p, div, *, table, h4 {
+  font-family: 'Myanmar3', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+*/
+
+.form-horizontal .control-label {
+  font-family: Myanmar3
+}
+
+.navbar-inverse {
+    background-image: -webkit-linear-gradient(#04519b, #044687 60%, #033769);
+    background-image: -o-linear-gradient(#04519b, #044687 60%, #033769);
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#04519b), color-stop(60%, #044687), to(#033769));
+    background-image: linear-gradient(#2f6294, #1f2426 60%, #0a1926);
+    background-repeat: no-repeat;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff04519b', endColorstr='#ff033769', GradientType=0);
+    -webkit-filter: none;
+    filter: none;
+    border-bottom: 1px solid #022241;
+}
+
+.navbar-inverse {
+    background-color: #858585;
+    border-color: #022f5a;
+}
+/**/
+
+.navbar-inverse .navbar-brand {
+  color: #ffffff;
+}
+
+.navbar-inverse .navbar-brand:hover,
+.navbar-inverse .navbar-brand:focus {
+  color: #ffffff;
+  background-color: transparent;
+}
+
+.navbar-inverse .navbar-text {
+  color: #ffffff;
+}
+
+.navbar-inverse .navbar-nav > li > a {
+  color: #ffffff;
+}
+
+/*----------*/
+
+.navbar-custom1 .nav > li > a:focus,
+.navbar-custom1 .nav > li > a:hover,
+.navbar-custom1 .nav > li.active > a {
+  background-color: #1f2426;
+}
+
+
+/*-- change navbar dropdown color --*/
+.navbar-custom1 .navbar-nav .open .dropdown-menu>li>a,.navbar-custom1 .navbar-nav .open .dropdown-menu {
+  background-color: #1f2426;
+  color:#ffffff;
+}
+        
+/* turn spinner off */
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+

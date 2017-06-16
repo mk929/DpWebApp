@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ConsularAppointmentTypes>
+  <ConsularAppointmentType>
+    <Code>1</Code>
+    <Description_EN>Visa Applicaition Type 1</Description_EN>
+    <Description_MM></Description_MM>
+    <ConsularLetterPdfTemplate>ApptLtr1p1Tmpl-DP.pdf</ConsularLetterPdfTemplate>
+    <Attachments>
+      <Attachment name="Attach1.pdf"
+                  path="Documents\Attachments\"
+                  mediaType ="application/pdf" />
+    </Attachments>
+  </ConsularAppointmentType>
+
+  <ConsularAppointmentType>
+    <Code>2</Code>
+    <Description_EN>Visa Applicaition Type 2</Description_EN>
+    <Description_MM></Description_MM>
+    <ConsularLetterPdfTemplate>ApptLtr1p1Tmpl-DP.pdf</ConsularLetterPdfTemplate>
+    <Attachments>
+      <Attachment name="Attach2.pdf"
+                  path="Documents\Attachments\"
+                  mediaType ="application/pdf" />
+    </Attachments>
+  </ConsularAppointmentType>
+
+</ConsularAppointmentTypes>

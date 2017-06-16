@@ -1,0 +1,11 @@
+﻿@model DpWebApp.Models.ConsularApptVM
+<div>
+	@Html.Partial((String)@ViewBag.PartialHtml, Model)
+</div>
+
+@section Scripts {
+
+	@Scripts.Render("~/bundles/jqueryval")
+	@Scripts.Render("~/bundles/jqueryui")
+
+}

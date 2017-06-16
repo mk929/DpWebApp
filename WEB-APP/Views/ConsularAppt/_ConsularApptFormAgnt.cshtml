@@ -1,0 +1,134 @@
+﻿@model DpWebApp.Models.ConsularApptVM
+@using DpWebApp.BLL
+@{
+	SelectList genderList = new SelectList(new[] {  new {Name = "Male", Value="M"},
+													new {Name = "Female", Value="F"}}, "Value", "Name");
+
+	SelectList workingDays = DateTime.Now.WorkingDaysSelectList(15, Request.IsAuthenticated);
+	SelectList appointmentTypes = DropDownLookups.GetAppointmentTypes();
+
+	SelectList stayTypeList = new SelectList(DpWebAppConfig.StayTypeDict.Select(p =>
+												new { Name = p.Value, Value = p.Key.ToString() }).ToArray(),
+												"Value", "Name");
+
+	ViewBag.SelectAppointmentDate = HttpUtility.HtmlDecode("&raquo;") + " Select Appointment Date " + HttpUtility.HtmlDecode("&laquo;");
+	ViewBag.SelectServiceType = HttpUtility.HtmlDecode("&raquo;") + " Select Service Type " + HttpUtility.HtmlDecode("&laquo;");
+
+}
+
+<style>
+    input,
+    select,
+    textarea {
+        max-width: 400px;
+    }
+</style>
+
+<div class="embassypaper">
+
+    <div class="row text-center">
+        <h3>@ViewBag.Title</h3>
+        <h4>(Agent Only)</h4>
+    </div>
+    @using (Html.BeginForm())
+            {
+        @Html.AntiForgeryToken()
+        <div class="form-horizontal" role="form" lang="mm">
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="col-md-12">
+                <div class="form-group">
+					<label class="control-label col-md-4" for="AppointmentDate">Appointment Date*:</label>
+                    <div class="col-md-6">
+                        @Html.DropDownListFor(model => model.AppointmentDate, workingDays, (string)ViewBag.SelectAppointmentDate
+, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.AppointmentDate, "", new { @class = "text-danger" }) Available up to two weeks in advance.
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="form-group ">
+					<label class="control-label col-md-4" for="AppointmentType">Service Type*:</label>
+                    <div class="col-md-6">
+                        @Html.DropDownListFor(model => model.AppointmentType, appointmentTypes, (string)ViewBag.SelectServiceType
+                 , new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.AppointmentType, "", new { @class = "text-danger" })
+                    </div>
+
+                </div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="col-md-5">
+                    <div class="form-group">
+						<label class="control-label col-md-4" for="Name">Agent/Agency Name*:</label>
+                        <div class="col-md-8">
+                            @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+					<div class="form-group">
+						<label class="control-label col-md-4" for="Name">Total Number of Applications*:</label>
+						<div class="col-md-8">
+							@Html.EditorFor(model => model.TotalNumberOfApplications, new { htmlAttributes = new { @class = "form-control" } })
+							@Html.ValidationMessageFor(model => model.TotalNumberOfApplications, "", new { @class = "text-danger" })
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="control-label col-md-4" for="ContactPhone">Phone*:</label>
+						<div class="col-md-8">
+							@Html.EditorFor(model => model.ContactPhone, new { htmlAttributes = new { @class = "form-control" } })
+							@Html.ValidationMessageFor(model => model.ContactPhone, "", new { @class = "text-danger" })
+						</div>
+					</div>
+                </div>
+                <div class="col-md-7">
+                    <div class="form-group">
+						<label class="control-label col-md-4" for="ContactEmail">E-mail*:</label>
+                        <div class="col-md-7">
+                            @Html.EditorFor(model => model.ContactEmail, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.ContactEmail, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+						<label class="control-label col-md-4" for="ContactAddr1">Address Line 1*:</label>
+                        <div class="col-md-7">
+                            @Html.EditorFor(model => model.ContactAddr1, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.ContactAddr1, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+					<div class="form-group">
+						<label class="control-label col-md-4" for="ContactAddr2">Address Line 2:</label>
+						<div class="col-md-7">
+							@Html.EditorFor(model => model.ContactAddr2, new { htmlAttributes = new { @class = "form-control" } })
+							@Html.ValidationMessageFor(model => model.ContactAddr2, "", new { @class = "text-danger" })
+						</div>
+					</div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+					@Html.HiddenFor(model => model.RequesterType)
+                    @Html.HiddenFor(model => model.Note)
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <div class="col-md-offset-4 col-md-4">
+                        <br />
+                        <input type="submit" value="Submit Appointment Request" class="btn btn-primary btn-block" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+            <br />
+    }
+</div>

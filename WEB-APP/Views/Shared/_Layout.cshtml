@@ -1,0 +1,83 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>@ViewBag.Title -Myanmar Embassy (Singapore)</title>
+	@Styles.Render("~/Content/css")
+	@Styles.Render("~/Content/themes/base/base.css")
+
+	<link href="~/Content/Nav.css" rel="stylesheet" />
+
+	@Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+	<header>
+		<div class="container group">
+			<center>
+				<div style="padding:0px;">
+					<!--
+					<img width="40" height="40" style="padding-bottom:10px" src="~/Content/images/logo.png" alt="Republic of the Union of Myanmar" />
+					&nbsp;&nbsp;&nbsp;  -->
+				</div>
+			</center>
+		</div>
+	</header>
+	<div class="clear"></div>
+	<div class="navbar navbar-inverse navbar-fixed-top  navbar-custom1">
+		<div class="container">
+			<div class="navbar-header">
+				<a class="pull-left" href="#">
+					<img width="320" height="50" src="~/Content/images/bannertypofix.png" style="display: inline-block;">
+				</a>
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<!-- Html.ActionLink("Myanmar Embassy (Singapore)", "Index", "Home", new { area = "" }, new { class = "navbar-brand" })  -->
+			</div>
+			<div class="navbar-collapse collapse">
+				<ul class="nav navbar-nav">
+					<li style="border-left:solid 1px white">@Html.ActionLink("Home", "index", "Home")</li>
+					<li style="border-left:solid 1px white"><a href="http://www.malaysiavisaservices.com/">About</a></li>
+					<li style="border-left:solid 1px white"><a href="http://malaysiavisaservices.com/index.php/contact-us/">Contact</a></li>
+					
+					<li class="menu-item dropdown" style="border-left:solid 1px white">
+						<a class="dropdown-toggle disabled" data-toggle="dropdown" href="#" role="button" >
+							Appointment Form&nbsp;&nbsp;
+						</a>
+							<ul class="dropdown-menu" role="menu">
+								<li>@Html.ActionLink("Agent", "Create", "ConsularAppt", new { id = 1 }, null)</li>
+								<li>@Html.ActionLink("Individual", "Create", "ConsularAppt", new { id = 2 }, null)</li>
+							</ul>
+					</li>
+
+					@if (Request.IsAuthenticated)
+					{
+						<li>@Html.ActionLink("Admin", "index", "Admin")</li>
+						<li>@Html.Partial("_LoginPartial")</li>
+					}
+				</ul>
+
+			</div>
+		</div>
+	</div>
+	<div class="container body-content">
+		<br />
+		@RenderBody()
+		<footer>
+			<br /><br /><hr />
+			<div class="row">
+				<div class="col-md-offset-10 col-md-2">
+					<p style="font-size:10px;">&copy; @DateTime.Now.Year - MyanmarITE</p>
+				</div>
+			</div>
+		</footer>
+	</div>
+
+	@Scripts.Render("~/bundles/jquery")
+	@Scripts.Render("~/bundles/bootstrap")
+	@RenderSection("Scripts", required: false)
+</body>
+</html>

@@ -20,6 +20,20 @@ namespace DpWebApp.Controllers
     public class ConsularApptController : Controller
     {
         private readonly string _formTile = "Visa Application Appointment Form";
+
+
+        public ActionResult AgentForm()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult AgentForm(AgentAppointmentVM model)
+        {
+            return View(model);
+        }
+        
+
         // GET: ConsularAppt/Create
         public ActionResult Create(int Id)
         {

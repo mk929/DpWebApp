@@ -4,6 +4,7 @@ using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Text;
 using System.Web;
 
 namespace DpWebApp.Models.Data
@@ -76,7 +77,31 @@ namespace DpWebApp.Models.Data
                 }
             }
         }
+        public static string GetConsularApptsAdminCSV(List<ConsularApptVM> list, char seperator)
+        {
+            StringBuilder sb = new StringBuilder();
 
+            string header = "Appointment Date|Name|Passport Number|Issued Date|Email|Phone".Replace('|', seperator);
+            sb.Append(header);
+            sb.AppendLine();
+            foreach (var item in list)
+            {
+                sb.Append(string.Format("{0:yyyy-MM-dd}", item.AppointmentDate));
+                sb.Append(seperator);
+                sb.Append(item.Name);
+                sb.Append(seperator);
+                sb.Append(item.PassportNumber);
+                sb.Append(seperator);
+                sb.Append(string.Format("{0:yyyy-MM-dd}", item.PassportIssuedDate));
+                sb.Append(seperator);
+                sb.Append(item.ContactEmail);
+                sb.Append(seperator);
+                sb.Append(item.ContactPhone);
+                sb.AppendLine();
+
+            }
+            return sb.ToString();
+        }
         public static ConsularApptVM GetConsularApptById(int id)
         {
             using (SqlConnection conn = GetDBConnection())

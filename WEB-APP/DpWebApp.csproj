@@ -203,6 +203,8 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="Models\AgentAppointmentViewModel.cs" />
+    <Compile Include="Models\AgentViewModel.cs" />
     <Compile Include="Models\CATestData.cs" />
     <Compile Include="Models\ConsularAppointmentModels.cs" />
     <Compile Include="DAL\DpWebAppDb.cs" />
@@ -384,6 +386,8 @@
     <Content Include="Views\ConsularAppt\_MsgApptConfirmedByAdmin.cshtml" />
     <Content Include="Views\ConsularAppt\_ConsularApptFormIndv.cshtml" />
     <Content Include="Views\ConsularAppt\_ConsularApptFormAgnt.cshtml" />
+    <Content Include="Views\Admin\AgentManager.cshtml" />
+    <Content Include="Views\ConsularAppt\AgentForm.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -401,6 +405,12 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Form_Resource.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DpWebAppData\DpWebAppData.csproj">
+      <Project>{1ec66b2e-664b-4f60-992f-b4f07ba3fb73}</Project>
+      <Name>DpWebAppData</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

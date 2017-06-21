@@ -22,6 +22,8 @@ namespace DpWebApp
         }
         protected void Application_Error(object sender, EventArgs e)
         {
+            return;
+
             Exception exception = Server.GetLastError();
             Server.ClearError();
             // Response.Redirect("~/Home/Error");

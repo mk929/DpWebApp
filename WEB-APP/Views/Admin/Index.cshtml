@@ -23,7 +23,12 @@
     <div class="container">
         <hr />
         <div class="panel panel-default">
-            <div class="panel-heading">Consular Appointments</div>
+            <div class="panel-heading">Consular Appointments 
+			@if ( (bool)ViewBag.DownloadCsv )
+			{
+				@Html.ActionLink("[Download CSV]", "GetCSV", new { ppNum = ViewBag.PassportNumber, apptDt = ViewBag.AppointmentDate }, new { @class = "pull-right", role = "link" });
+			}
+			</div>
             <div class="panel-body">
                 @foreach (var item in Model)
                 {

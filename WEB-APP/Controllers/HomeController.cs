@@ -8,6 +8,7 @@ namespace DpWebApp.Controllers
 {
     public class HomeController : Controller
     {
+        [Authorize]
         public ActionResult Index()
         {
             return View();
@@ -15,14 +16,14 @@ namespace DpWebApp.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "Consular Appointment Request.";
+            ViewBag.Message = "Malaysia Visa Application Appointment Request.";
 
             return View();
         }
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Myanmar Embassy (Singapore)";
+            ViewBag.Message = "Malaysia Visa Application (OSC)";
 
             return View();
         }

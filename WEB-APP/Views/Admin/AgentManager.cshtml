@@ -1,0 +1,125 @@
+﻿@model DpWebApp.Models.AgentViewModel
+
+
+@using (Html.BeginForm())
+{
+	<!-- BEGIN HIDDEN FIELDS AREA-->
+	@Html.HiddenFor(m => m.EventCommand)
+	@Html.HiddenFor(m => m.Mode)
+	<!-- END HIDDEN FIELDS AREA-->
+
+	<!-- BEGIN SEARCH AREA -->
+	<div>
+		@if (Model.IsSearchAreaVisible)
+		{
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h1 class="panel-title">Search For Agents</h1>
+				</div>
+				<div class="panel-body">
+					<div class="form-group">
+						@Html.LabelFor(m => m.SearchEntity.AgentName, "Agent Name")
+						@Html.TextBoxFor(m => m.SearchEntity.AgentName, "", new { @class = "form-control" })
+					</div>
+				</div>
+				<div class="panel-footer">
+					<button id="btnSearch" class="btn btn-xs btn-primary" data-dpwa-action="search">
+						<i class="glyphicon glyphicon-search"></i>&nbsp;Search
+					</button>
+					<button id="btnReset" class="btn btn-xs btn-primary" data-dpwa-action="resetsearch">
+						<i class="glyphicon glyphicon-a"></i>&nbsp;Reset
+					</button>
+					<button id="btnAdd" class="btn btn-xs btn-primary" data-dpwa-action="add">
+						<i class="glyphicon glyphicon-plus-sign"></i>&nbsp;Add New Agent Login
+					</button>
+				</div>
+			</div>
+		}
+	</div>
+	<!-- END SEARCH AREA -->
+	<!-- BEGIN LIST AREA -->
+	<div>
+		@if (Model.IsListAreaVisible)
+		{
+			<div class="table-responsive">
+				<table class="table table-condensed table-bordered table-striped table-hover">
+					<thead>
+						<tr>
+							<th>Agent Name</th>
+							<th>Login Email</th>
+							<th>Phone</th>
+							<th>Intro. Date</th>
+						</tr>
+					</thead>
+					<tbody>
+						@foreach (var item in @Model.Agents)
+						{
+							<tr>
+								<td>@item.AgentName</td>
+								<td>@item.Email</td>
+								<td>@item.Phone</td>
+								<td>@item.IntroDate</td>
+							</tr>
+						}
+					</tbody>
+				</table>
+			</div>
+		}
+	</div>
+	<!-- END LIST AREA -->
+	<!-- BEGIN DETAIL AREA -->
+	<div>
+		@if (Model.IsDetailAreaVisible)
+		{
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<hi>Agent Login Information</hi>
+				</div>
+				<div class="panel-body">
+					<div class="form-group">
+						@Html.LabelFor(m => m.Entity.AgentName)
+						@Html.TextBoxFor(m => m.Entity.AgentName, new { @class = "form-control" })
+					</div>
+					<div class="form-group">
+						@Html.LabelFor(m => m.Entity.Email)
+						@Html.TextBoxFor(m => m.Entity.Email, new { @class = "form-control" })
+					</div>
+					<div class="form-group">
+						@Html.LabelFor(m => m.Entity.Password)
+						@Html.TextBoxFor(m => m.Entity.Password, new { @class = "form-control" })
+					</div>
+					<div class="form-group">
+						@Html.LabelFor(m => m.Entity.Phone)
+						@Html.TextBoxFor(m => m.Entity.Phone, new { @class = "form-control" })
+					</div>
+				</div>
+				<div class="panel-footer">
+					<button id="btnSave" class="btn btn-xs btn-primary" data-dpwa-action="save">
+						<i class="glyphicon glyphicon-save"></i>&nbsp;Save
+					</button>
+					<button id="btnCancel" class="btn btn-xs btn-primary" formnovalidate="formnovalidate" data-dpwa-action="cancel">
+						<i class="glyphicon glyphicon-remove-circle"></i>&nbsp;Cancel
+					</button>
+				</div>
+			</div>
+		}
+	</div>
+				<!-- END DETAIL AREA -->
+}
+
+@section Scripts
+{
+	<script>
+		$(document).ready(function () {
+			$("[data-dpwa-action]").on("click", function (e) {
+
+				e.preventDefault();
+
+				$("#EventCommand").val($(this).attr("data-dpwa-action"));
+
+				$("form").submit();
+			});
+		});
+
+	</script>
+}

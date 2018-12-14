@@ -1,6 +1,4 @@
-﻿@model DpWebApp.Models.AgentViewModel
-
-
+﻿@model DpWebApp.Models.AgencyViewModel
 @using (Html.BeginForm())
 {
 	<!-- BEGIN HIDDEN FIELDS AREA-->
@@ -14,12 +12,12 @@
 		{
 			<div class="panel panel-default">
 				<div class="panel-heading">
-					<h1 class="panel-title">Search For Agents</h1>
+					<h1 class="panel-title">Search For Agencies</h1>
 				</div>
 				<div class="panel-body">
 					<div class="form-group">
-						@Html.LabelFor(m => m.SearchEntity.AgentName, "Agent Name")
-						@Html.TextBoxFor(m => m.SearchEntity.AgentName, "", new { @class = "form-control" })
+						@Html.LabelFor(m => m.SearchEntity.CompanyName, "Agency Name")
+						@Html.TextBoxFor(m => m.SearchEntity.CompanyName, "", new { @class = "form-control" })
 					</div>
 				</div>
 				<div class="panel-footer">
@@ -30,7 +28,7 @@
 						<i class="glyphicon glyphicon-a"></i>&nbsp;Reset
 					</button>
 					<button id="btnAdd" class="btn btn-xs btn-primary" data-dpwa-action="add">
-						<i class="glyphicon glyphicon-plus-sign"></i>&nbsp;Add New Agent Login
+						<i class="glyphicon glyphicon-plus-sign"></i>&nbsp;Add New Agency Login
 					</button>
 				</div>
 			</div>
@@ -45,17 +43,17 @@
 				<table class="table table-condensed table-bordered table-striped table-hover">
 					<thead>
 						<tr>
-							<th>Agent Name</th>
+							<th>Agency Name</th>
 							<th>Login Email</th>
 							<th>Phone</th>
 							<th>Intro. Date</th>
 						</tr>
 					</thead>
 					<tbody>
-						@foreach (var item in @Model.Agents)
+						@foreach (var item in @Model.Agencies)
 						{
 							<tr>
-								<td>@item.AgentName</td>
+								<td>@item.CompanyName</td>
 								<td>@item.Email</td>
 								<td>@item.Phone</td>
 								<td>@item.IntroDate</td>
@@ -73,12 +71,12 @@
 		{
 			<div class="panel panel-default">
 				<div class="panel-heading">
-					<hi>Agent Login Information</hi>
+					<hi>Agency Login Information</hi>
 				</div>
 				<div class="panel-body">
 					<div class="form-group">
-						@Html.LabelFor(m => m.Entity.AgentName)
-						@Html.TextBoxFor(m => m.Entity.AgentName, new { @class = "form-control" })
+						@Html.LabelFor(m => m.Entity.CompanyName)
+						@Html.TextBoxFor(m => m.Entity.CompanyName, new { @class = "form-control" })
 					</div>
 					<div class="form-group">
 						@Html.LabelFor(m => m.Entity.Email)

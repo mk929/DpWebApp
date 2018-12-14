@@ -16,7 +16,7 @@ namespace DpWebApp
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "ConsularAppt", action = "AgentForm", id = UrlParameter.Optional }
+                defaults: new { controller = "ConsularAppt", action = "AgencyForm", id = UrlParameter.Optional }
                 // defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
         }

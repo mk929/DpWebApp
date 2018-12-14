@@ -18,16 +18,16 @@ namespace DpWebApp.Controllers
     {
         // GET: Admin
         [AllowAnonymous]
-        public ActionResult AgentManager()
+        public ActionResult AgencyManager()
         {
-            AgentViewModel vm = new AgentViewModel();
+            var vm = new AgencyViewModel();
             vm.HandleRequest();
             return View(vm);
         }
 
         [HttpPost]
         [AllowAnonymous]
-        public ActionResult AgentManager(AgentViewModel vm)
+        public ActionResult AgencyManager(AgencyViewModel vm)
         {
             vm.HandleRequest();
             ModelState.Clear();

@@ -6,9 +6,9 @@ using System.Web;
 
 namespace DpWebApp.Models
 {
-    public class AgentViewModel
+    public class AgencyViewModel
     {
-        public AgentViewModel()
+        public AgencyViewModel()
         {
             Init();
         }
@@ -31,7 +31,7 @@ namespace DpWebApp.Models
         {
             IsValid = true;
 
-            Entity = new Agent();
+            Entity = new Agency();
             Entity.IntroDate = DateTime.Now;
 
             AddMode();
@@ -44,11 +44,11 @@ namespace DpWebApp.Models
             IsSearchAreaVisible = false;
             IsDetailAreaVisible = true;
         }
-        public List<Agent> Agents { get; set; } = new List<Agent>();
+        public List<Agency> Agencies { get; set; } = new List<Agency>();
 
         // SearchEntity is search parameter passing back from View
-        public Agent Entity { get; set; } = new Agent(); 
-        public Agent SearchEntity { get; set; } = new Agent();
+        public Agency Entity { get; set; } = new Agency(); 
+        public Agency SearchEntity { get; set; } = new Agency();
         public bool IsValid { get; set; }
         public string Mode { get; set; }
         public string EventCommand { get; set; } = string.Empty;
@@ -60,13 +60,13 @@ namespace DpWebApp.Models
 
         public void Get()
         {
-            AgentManagerData mgr = new AgentManagerData();
-            Agents = mgr.GetAgents();
+            AgencyManagerData mgr = new AgencyManagerData();
+            Agencies = mgr.GetAgencies();
         }
-        public void Get(Agent agent)
+        public void Get(Agency Agency)
         {
-            AgentManagerData mgr = new AgentManagerData();
-            Agents = mgr.GetAgents(agent);
+            AgencyManagerData mgr = new AgencyManagerData();
+            Agencies = mgr.GetAgencies(Agency);
         }
 
         public void HandleRequest()

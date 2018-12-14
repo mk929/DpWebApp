@@ -22,13 +22,13 @@ namespace DpWebApp.Controllers
         private readonly string _formTile = "Visa Application Appointment Form";
 
 
-        public ActionResult AgentForm()
+        public ActionResult AgencyForm()
         {
             return View();
         }
 
         [HttpPost]
-        public ActionResult AgentForm(AgentAppointmentVM model)
+        public ActionResult AgencyForm(AgencyAppointmentVM model)
         {
             return View(model);
         }

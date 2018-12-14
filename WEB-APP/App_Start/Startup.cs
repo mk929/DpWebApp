@@ -54,19 +54,19 @@ namespace DpWebApp
             }
 
             //  Creating Agent role 
-            if (!roleManager.RoleExists("Agent"))
+            if (!roleManager.RoleExists("Agency"))
             {
                 var role = new Microsoft.AspNet.Identity.EntityFramework.IdentityRole();
-                role.Name = "Agent";
+                role.Name = "Agency";
                 roleManager.Create(role);
 
                 //Here we create a test user
-                var user = UserManager.FindByName("user@agent.com");
+                var user = UserManager.FindByName("user@agency.com");
                 if (user == null)
                 {
                     user = new ApplicationUser();
-                    user.UserName = "user@agent.com";
-                    user.Email = "user@agent.com";
+                    user.UserName = "user@agency.com";
+                    user.Email = "user@agency.com";
 
                     string userPWD = "111111";
 
@@ -75,7 +75,7 @@ namespace DpWebApp
                     //Add default User to Role Admin
                     if (chkUser.Succeeded)
                     {
-                        var result1 = UserManager.AddToRole(user.Id, "Agent");
+                        var result1 = UserManager.AddToRole(user.Id, "Agency");
 
                     }
                 }

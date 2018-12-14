@@ -24,16 +24,16 @@ namespace DpWebApp.Models
 
             requesterType = ((requesterType == 1 || requesterType == 2) ? requesterType : r.Next(1, 3));
 
-            if ( requesterType == 1) // Agent
+            if ( requesterType == 1) // Agency
             {
                 return new ConsularApptVM()
                 {
                     RequesterType = requesterType,
                     AppointmentDate = appointmentDate,
                     AppointmentType = r.Next(1, 3),
-                    Name = String.Format("Agent_{0}", _i),
-                    ContactAddr1 = String.Format("[{0}] Agent Address Line 1", _i),
-                    ContactAddr2 = String.Format("[{0}] Agent Address Line 2", _i),
+                    Name = String.Format("Agency_{0}", _i),
+                    ContactAddr1 = String.Format("[{0}] Agency Address Line 1", _i),
+                    ContactAddr2 = String.Format("[{0}] Agency Address Line 2", _i),
                     ContactPhone = String.Format("+65 {0}",
                                         String.Format("{0}", r.Next(1000000, 9999999).ToString("D8"))),
                     ContactEmail = String.Format("{0}@test.com", String.Format("User_{0}", _i)),

@@ -8,11 +8,13 @@ namespace DpWebAppData
 {
     public class VisaApplication
     {
-        [Required]
+        [Required(ErrorMessage = "??")]
         public string Name { get; set; }
-        [Required]
+
+        [Required(ErrorMessage = "??")]
         public string PassportNumber { get; set; }
-        [Required]
+
+        [Required(ErrorMessage = "??")]
         public DateTime PassportIssueDate { get; set; } 
     }
 }

@@ -203,8 +203,8 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Models\AgentAppointmentViewModel.cs" />
-    <Compile Include="Models\AgentViewModel.cs" />
+    <Compile Include="Models\AgencyAppointmentViewModel.cs" />
+    <Compile Include="Models\AgencyViewModel.cs" />
     <Compile Include="Models\CATestData.cs" />
     <Compile Include="Models\ConsularAppointmentModels.cs" />
     <Compile Include="DAL\DpWebAppDb.cs" />
@@ -216,6 +216,7 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="App_Start\Startup.cs" />
+    <Compile Include="Util\ControllerHtml.cs" />
     <Compile Include="Util\Email.cs" />
     <Compile Include="Util\ExceptionLogger.cs" />
     <Compile Include="Util\HtmlExtensions.cs" />
@@ -386,8 +387,8 @@
     <Content Include="Views\ConsularAppt\_MsgApptConfirmedByAdmin.cshtml" />
     <Content Include="Views\ConsularAppt\_ConsularApptFormIndv.cshtml" />
     <Content Include="Views\ConsularAppt\_ConsularApptFormAgnt.cshtml" />
-    <Content Include="Views\Admin\AgentManager.cshtml" />
-    <Content Include="Views\ConsularAppt\AgentForm.cshtml" />
+    <Content Include="Views\Admin\AgencyManager.cshtml" />
+    <Content Include="Views\ConsularAppt\AgencyForm.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

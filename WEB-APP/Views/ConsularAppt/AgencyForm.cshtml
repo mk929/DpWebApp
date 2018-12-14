@@ -1,4 +1,4 @@
-﻿@model DpWebApp.Models.AgentAppointmentVM
+﻿@model DpWebApp.Models.AgencyAppointmentVM
 
 
 @using DpWebApp.BLL
@@ -17,9 +17,10 @@
 			<div class="container">
 				<div class="row clearfix">
 					<div class="form-group pull-left">
-						@Html.LabelFor(model => model.AppointmentDate, htmlAttributes: new { @class = "control-label" })
+						<label class="control-label" for="AppointmentDate">Appointment Date:</label>
 						@Html.DropDownListFor(model => model.AppointmentDate, workingDays, "-- Select Appointment Date --"
 , new { @class = "form-control" })
+						@Html.ValidationMessageFor(model => model.AppointmentDate, "", new { @class = "text-danger" })
 					</div>
 				</div>
 				<div class="row clearfix">
@@ -47,13 +48,16 @@
 										1
 									</td>
 									<td>
-										<input type="text" name='VisaApplications[0].Name' placeholder='Name' class="form-control" />
+											<input type="text" name='VisaApplications[0].Name' placeholder='Name' class="form-control" style="display:inline" data-val="true" data-val-required="??" />
+										<span class="field-validation-valid text-danger" data-valmsg-for="VisaApplications[0].Name" data-valmsg-replace="true"></span>
 									</td>
 									<td>
-										<input type="text" name='VisaApplications[0].PassportNumber' placeholder='Passport Number' class="form-control" />
+										<input type="text" name='VisaApplications[0].PassportNumber' placeholder='Passport Number' class="form-control" style="display:inline" data-val="true"  data-val-required="??" />
+										<span class="field-validation-valid text-danger" data-valmsg-for="VisaApplications[0].PassportNumber" data-valmsg-replace="true"></span>
 									</td>
 									<td>
-										<input type="text" name='VisaApplications[0].PassportIssueDate' placeholder='Issue Date (yyyy-mm-dd)' class="form-control" />
+										<input type="text" name='VisaApplications[0].PassportIssueDate' placeholder='Expiration Date (yyyy-mm-dd)' class="form-control" style="display:inline" data-val="true"  data-val-required="??" />
+										<span class="field-validation-valid text-danger" data-valmsg-for="VisaApplications[0].PassportIssueDate" data-valmsg-replace="true"></span>
 									</td>
 								</tr>
 								<tr id='ppTr_1'></tr>
@@ -81,6 +85,7 @@
 
 @section Scripts
 {
+	@Scripts.Render("~/bundles/jqueryval")
 	<script>
 		$(document).ready(function () {
 
@@ -91,19 +96,21 @@
 				e.preventDefault();
 
 				$('#ppTr_' + i).html("<td>" + (i + 1) + "</td>"
-					+ "<td><input name='VisaApplications[" + i + "].Name' type='text' placeholder='Name' class='form-control text-box single-line input-md'  data-val='true' data-val-required='Required' /> </td>"
-					+ "<td><input name='VisaApplications[" + i + "].PassportNumber' type='text' placeholder='Passport Number' class='form-control text-box single-line input-md' data-val='true' data-val-required='Required'></td>"
-					+ "<td><input name='VisaApplications[" + i + "].PassportIssueDate' type='text' placeholder='Issue Date (yyyy-mm-yy)' class='form-control text-box single-line input-md' data-val='true' data-val-required='Required'></td>");
+					+ "<td><input name='VisaApplications[" + i + "].Name' type='text' placeholder='Name' class='form-control'  data-val='true' data-val-required='Required' /> </td>"
+					+ "<td><input name='VisaApplications[" + i + "].PassportNumber' type='text' placeholder='Passport Number' class='form-control' data-val='true' data-val-required='Required' /></td>"
+					+ "<td><input name='VisaApplications[" + i + "].PassportIssueDate' type='text' placeholder='Issue Date (yyyy-mm-yy)' class='form-control' data-val='true' data-val-required='Required' /></td>");
+
 
 				$('#ppTab').append('<tr id="ppTr_' + (i + 1) + '"></tr>');
 				i++;
+
 			});
 
 			$("#delete_row").click(function (e) {
 
 				e.preventDefault();
 
-				/* 
+				/*
 				var rowCount = $('#ppTab > tbody > tr').length;
 				alert ( i + ", " + rowCount);
 				if (rowCount > 1000) {
@@ -116,25 +123,23 @@
 					$("#ppTr_" + (i - 1)).html('');
 					i--;
 				}
+
 			});
+
+
 
 			$("#btnSubmit").on("click", function (e) {
 
 				e.preventDefault();
 
-				//Remove current form validation information
-				$("form")
-					.removeData("validator")
-					.removeData("unobtrusiveValidation");
-
-				//Parse the form again
-				$.validator
-					.unobtrusive
-					.parse("form");
-
+				$("form").removeData("validator");
+				$("form").removeData("unobtrusiveValidation");
+				$.validator.unobtrusive.parse("form");
 
 				$("form").submit();
 			});
+
+
 
 		});
 

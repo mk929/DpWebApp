@@ -7,11 +7,12 @@ using System.Web;
 
 namespace DpWebApp.Models
 {
-    public class AgentAppointmentVM
+    public class AgencyAppointmentVM
     {
         [Required]
         public int AgentId { get; set; } = 1;
-        [Required]
+
+        [Required(ErrorMessage = "Please Select Appointment Date")]
         public DateTime AppointmentDate { get; set; }
         [Required]
         public List<VisaApplication> VisaApplications { get; set; } = new List<VisaApplication>();

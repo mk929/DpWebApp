@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DpWebAppData
 {
-    class AgentAppointment
+    class AgencyAppointment
     {
         public int AgentId { get; set; }
         public DateTime AppointmentDate { get; set; }
